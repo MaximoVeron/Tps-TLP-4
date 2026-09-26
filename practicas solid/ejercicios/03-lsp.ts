@@ -1,36 +1,15 @@
-class Rectangle {
-  constructor(protected width: number, protected height: number) {}
-
-  setWidth(width: number): void {
-    this.width = width;
-  }
-
-  setHeight(height: number): void {
-    this.height = height;
-  }
-
-  area(): number {
-    return this.width * this.height;
-  }
+abstract class GeometricFigure {
+  abstract area(): number;
 }
 
-class Square extends Rectangle {
-  setWidth(width: number): void {
-    this.width = width;
-    this.height = width;
+class square extends GeometricFigure {
+  lado: number;
+  constructor(lado: number) {
+    super();
+    this.lado = lado;
   }
 
-  setHeight(height: number): void {
-    this.width = height;
-    this.height = height;
+  override area(): number {
+    return this.lado ** 2;
   }
 }
-
-function resizeRectangle(rectangle: Rectangle): void {
-  rectangle.setWidth(5);
-  rectangle.setHeight(10);
-  console.log(`Area esperada: 50. Area obtenida: ${rectangle.area()}`);
-}
-
-resizeRectangle(new Rectangle(1, 1));
-resizeRectangle(new Square(1, 1));
