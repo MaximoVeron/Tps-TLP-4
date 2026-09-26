@@ -39,7 +39,7 @@ class UserRepository {
   private constructor() {}
 
   public static checkInstance(): UserRepository {
-    if (!this.instance) return new UserRepository();
+    if (!this.instance) return (this.instance = new UserRepository());
     return this.instance;
   }
 }
